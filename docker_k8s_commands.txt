@@ -1,0 +1,27 @@
+################
+#### Docker ####
+################
+
+	docker build -t camera-detector .   			# builds dockerfile with alias camera-detector (. to use dockerfile in the current dir).
+	docker pull --quiet python:3.8-slim				# downloads the base image, can be used to check the image size.
+	docker images = docker image ls					# display all images in the system.
+	docker rmi -f [IMAGE ID]               			# deletes an image -f to force - IMAGE ID ex: e6e8c41e2ba5
+	docker run -it -p 8000:8000 camera-detector 	# run the built container with the alias built with build command.
+
+
+RUN BEFORE: 
+	export KUBECONFIG=/home/user/kubeconfig.yaml   # exports the kubeconfig file so you dont have to write -- kubeconfig [PATH] every command.
+	
+################
+##### k8s  #####
+################
+	# -n develop will execute the commands under the namespace develop
+	
+	kubectl -n develop get pods                     				# display all pods
+	kubectl -n develop get services									# display all services
+	kubectl -n develop port-forward service/name-svc 8000:8000 		# connects your local port 8000 to the service name-svc
+	kubectl -n develop logs -f pod/[POD NAME]       				# show the logs for the pod on POD NAME - ex: netrin-receitafederal-captcha-solver-74c6748ff9-9b8s8
+	kubectl -n develop exec -it pod/[POD NAME] -- /bin/sh 			# connects you into the container (you'll have acess to the files and can check what directories of files are there.
+	kubectl -n develop describe pod/[POD NAME]  					# describes the pod info like times, IDs, ports, labels, cpu/memory, restarts etc...
+	kubectl -n develop delete pod/[POD NAME]   						# deletes the pod		
+	

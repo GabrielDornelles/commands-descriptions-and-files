@@ -1,0 +1,12 @@
+run it over: vim ~/.tmux.conf
+
+add:
+- vim colorscheme on tmux
+- unbind the initial tmux command from CTRL+B to CTRL+A (which is easier and better at least for me)
+
+```
+set -g default-terminal 'screen-256color'
+unbind-key C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+```
