@@ -21,7 +21,7 @@ RUN BEFORE:
 	kubectl -n develop get services									# display all services
 	kubectl -n develop port-forward service/name-svc 8000:8000 		# connects your local port 8000 to the service name-svc
 	kubectl -n develop logs -f pod/[POD NAME]       				# show the logs for the pod on POD NAME
-	kubectl -n develop exec -it pod/[POD NAME] -- /bin/sh 			# connects you into the container (you'll have acess to the files and can check what directories of files are there.
+	kubectl -n develop exec -it pod/[POD NAME] -- /bin/sh 			# connects you into the pod (you'll have acess to the files and can check what directories and files are there).
 	kubectl -n develop describe pod/[POD NAME]  					# describes the pod info like times, IDs, ports, labels, cpu/memory, restarts etc...
 	kubectl -n develop delete pod/[POD NAME]   						# deletes the pod		
 	
